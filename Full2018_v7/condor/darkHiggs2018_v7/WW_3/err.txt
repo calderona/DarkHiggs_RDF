@@ -1,0 +1,53 @@
+Warning in <TClass::Init>: no dictionary for class edm::Hash<1> is available
+Warning in <TClass::Init>: no dictionary for class edm::ProcessHistory is available
+Warning in <TClass::Init>: no dictionary for class edm::ProcessConfiguration is available
+Warning in <TClass::Init>: no dictionary for class edm::ParameterSetBlob is available
+Warning in <TClass::Init>: no dictionary for class pair<edm::Hash<1>,edm::ParameterSetBlob> is available
+In module 'ROOTDataFrame':
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RDF/InterfaceUtils.hxx:313:4: error: static_assert failed due to requirement 'std::is_convertible<ROOT::VecOps::RVec<int>, bool>::value' "filter expression returns a type that is not convertible to bool"
+   static_assert(std::is_convertible<FilterRet_t, bool>::value,
+   ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RDF/InterfaceUtils.hxx:451:4: note: in instantiation of function template specialization 'ROOT::Internal::RDF::CheckFilter<ROOT::VecOps::RVec<int> (ROOT::VecOps::RVec<int> &, ROOT::VecOps::RVec<float> &, ROOT::VecOps::RVec<double> &)>' requested here
+   CheckFilter(f);
+   ^
+input_line_116:75:22: note: in instantiation of function template specialization 'ROOT::Internal::RDF::JitFilterHelper<ROOT::VecOps::RVec<int> (&)(ROOT::VecOps::RVec<int> &, ROOT::VecOps::RVec<float> &, ROOT::VecOps::RVec<double> &), ROOT::Detail::RDF::RNodeBase>' requested here
+ROOT::Internal::RDF::JitFilterHelper(R_rdf::func15, new const char*[3]{"Lepton_pdgId", "Lepton_pt", "weight"}, 3, "", reinterpret_cast<std::weak_ptr<ROOT::Detail::RDF::RJittedFilter>*>(0x165b0050), reinterpret_cast<std::shared_ptr<ROOT::Detail::RDF::RNodeBase>*>(0x1620b320),reinterpret_cast<ROOT::Internal::RDF::RColumnRegister*>(0x139e7e40));
+                     ^
+In module 'ROOTDataFrame':
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RDF/RFilter.hxx:113:14: error: no viable conversion from returned value of type 'ROOT::VecOps::RVec<int>' to function return type 'bool'
+      return fFilter(fValues[slot][S]->template Get<ColTypes>(entry)...);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RDF/RFilter.hxx:100:27: note: in instantiation of function template specialization 'ROOT::Detail::RDF::RFilter<ROOT::VecOps::RVec<int> (*)(ROOT::VecOps::RVec<int> &, ROOT::VecOps::RVec<float> &, ROOT::VecOps::RVec<double> &), ROOT::Detail::RDF::RNodeBase>::CheckFilterHelper<ROOT::VecOps::RVec<int>, ROOT::VecOps::RVec<float>, ROOT::VecOps::RVec<double> , 0UL, 1UL, 2UL>' requested here
+            auto passed = CheckFilterHelper(slot, entry, ColumnTypes_t{}, TypeInd_t{});
+                          ^
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RDF/RFilter.hxx:73:4: note: in instantiation of member function 'ROOT::Detail::RDF::RFilter<ROOT::VecOps::RVec<int> (*)(ROOT::VecOps::RVec<int> &, ROOT::VecOps::RVec<float> &, ROOT::VecOps::RVec<double> &), ROOT::Detail::RDF::RNodeBase>::CheckFilters' requested here
+   RFilter(FilterF f, const ROOT::RDF::ColumnNames_t &columns, std::shared_ptr<PrevNode_t> pd,
+   ^
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RDF/InterfaceUtils.hxx:460:40: note: in instantiation of member function 'ROOT::Detail::RDF::RFilter<ROOT::VecOps::RVec<int> (*)(ROOT::VecOps::RVec<int> &, ROOT::VecOps::RVec<float> &, ROOT::VecOps::RVec<double> &), ROOT::Detail::RDF::RNodeBase>::RFilter' requested here
+      std::unique_ptr<RFilterBase>(new F_t(std::forward<F>(f), cols, *prevNodeOnHeap, *colRegister, name)));
+                                       ^
+input_line_116:75:22: note: in instantiation of function template specialization 'ROOT::Internal::RDF::JitFilterHelper<ROOT::VecOps::RVec<int> (&)(ROOT::VecOps::RVec<int> &, ROOT::VecOps::RVec<float> &, ROOT::VecOps::RVec<double> &), ROOT::Detail::RDF::RNodeBase>' requested here
+ROOT::Internal::RDF::JitFilterHelper(R_rdf::func15, new const char*[3]{"Lepton_pdgId", "Lepton_pt", "weight"}, 3, "", reinterpret_cast<std::weak_ptr<ROOT::Detail::RDF::RJittedFilter>*>(0x165b0050), reinterpret_cast<std::shared_ptr<ROOT::Detail::RDF::RNodeBase>*>(0x1620b320),reinterpret_cast<ROOT::Internal::RDF::RColumnRegister*>(0x139e7e40));
+                     ^
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RVec.hxx:1535:4: note: candidate template ignored: could not match 'RVec<type-parameter-0-0>' against 'bool'
+   operator RVec<U>() const
+   ^
+/cvmfs/sft.cern.ch/lcg/releases/ROOT/6.28.06-97f54/x86_64-el9-gcc11-opt/include/ROOT/RVec.hxx:1268:4: note: candidate template ignored: could not match 'RVecN<type-parameter-0-0, N>' against 'bool'
+   operator RVecN<U, M>() const
+   ^
+Traceback (most recent call last):
+  File "/pool/condor/dir_1356310/runner.py", line 1172, in <module>
+    runner.run()
+  File "/pool/condor/dir_1356310/runner.py", line 1162, in run
+    print("Number of events passing preselections:", count.GetValue())
+cppyy.gbl.std.runtime_error: const ULong64_t& ROOT::RDF::RResultPtr<ULong64_t>::GetValue() =>
+    runtime_error: 
+An error occurred during just-in-time compilation in RLoopManager::Run. The lines above might indicate the cause of the crash
+All RDF objects that have not run their event loop yet should be considered in an invalid state.
+
+
+real	0m23.761s
+user	0m12.275s
+sys	0m3.472s
+cp: cannot stat 'output.root': No such file or directory
+rm: cannot remove 'output.root': No such file or directory
