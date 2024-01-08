@@ -11,8 +11,9 @@ aliases = OrderedDict()
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 
+
 eleWP='mvaFall17V1Iso_WP90'
-muWP='cut_Tight_HWWW'
+muWP= 'cut_Tight_HWWW'
 
 aliases['LepWPCut'] = {
     'expr': 'LepCut2l__ele_'+eleWP+'__mu_'+muWP,
@@ -48,22 +49,35 @@ aliases['multiJet'] = {
 }
 
 
+#aliases['bVeto'] = {
+#    'expr': 'Sum(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+#}
+
+#aliases['bReq'] = {
+#    'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
+#}
+
+#aliases['topcr'] = {
+#    'expr': 'mth>50 && mll<80 && drll<2.5 && ((zeroJet && !bVeto) || bReq)'
+#}
+
+# Actual algo and WP definition. BE CONSISTENT!!
+bAlgo = 'DeepB' # ['DeepB','DeepFlavB']
+bWP   = '0.1241'
+bSF   = 'deepcsv' # ['deepcsv','deepjet']  ## deepflav is new b-tag SF
+
 aliases['bVeto'] = {
-    'expr': 'Sum(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+    'expr': 'Sum(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Take(Jet_btag{}, CleanJet_jetIdx) > {}) == 0'.format(bAlgo, bWP)
 }
 
-aliases['bReq'] = {
-    'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
+# At least one b-tagged jet  
+aliases['bReq'] = { 
+    'expr': 'Sum(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Take(Jet_btag{}, CleanJet_jetIdx) > {}) >= 1'.format(bAlgo, bWP)
 }
 
 aliases['topcr'] = {
-    'expr': 'mth>50 && mll<80 && drll<2.5 && ((zeroJet && !bVeto) || bReq)'
+    'expr': 'mth>40 && PuppiMET_pt>20 && mll > 12 && ((zeroJet && !bVeto) || bReq)'
 }
-
-# Actual algo and WP definition. BE CONSISTENT!!
-#bAlgo = 'DeepFlavB' # ['DeepB','DeepFlavB']
-#bWP   = bWP_loose_deepFlavB
-bSF   = 'deepcsv' # ['deepcsv','deepjet']  ## deepflav is new b-tag SF
 
 aliases['bVetoSF'] = {
     'expr': 'TMath::Exp(Sum(LogVec((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Take(Jet_btagSF_{}_shape, CleanJet_jetIdx)+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))'.format(bSF),
@@ -81,9 +95,14 @@ aliases['btagSF'] = {
 }
 
 aliases['JetPUID_SF'] = {
-    'expr': '( 1 * !(topcr) + (topcr)*Jet_PUIDSF_loose)',
-    'samples': mc
+  'expr' : 'TMath::Exp(Sum((Jet_jetId>=2)*LogVec(Jet_PUIDSF_loose)))',
+  'samples': mc
 }
+
+#aliases['JetPUID_SF'] = {
+#    'expr': '( 1 * !(topcr) + (topcr)*Jet_PUIDSF_loose)',
+#    'samples': mc
+#}
 
 
 for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2', 'cferr1', 'cferr2']:
@@ -189,6 +208,8 @@ aliases['SFweight'] = {
     'expr': ' * '.join(['SFweight2l','LepWPCut','LepWPSF','btagSF','JetPUID_SF']),
     'samples': mc
 }
+
+
 # variations
 aliases['SFweightEleUp'] = {
     'expr': 'LepSF2l__ele_'+eleWP+'__Up',
