@@ -19,6 +19,8 @@ cuts['dhww2l2v_13TeV_sr'] = {
     'expr': 'ptll>30 && mth > 50 && mll < 80 && drll < 2.5 && bVeto',
     'categories' : {
         '0j' : 'Alt(CleanJet_pt,0, 0.0)<30.0',
+        '1j' : 'Alt(CleanJet_pt,0, 0.0)>30.0 && Alt(CleanJet_pt,1, 0.0)<30.0',
+        '2j' : 'Sum(CleanJet_pt>30.0)==2',
     }
 }
 

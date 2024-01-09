@@ -39,7 +39,7 @@ cutsFile = 'cuts.py'
 
 
 # file with list of samples
-samplesFile = 'onesamples.py' 
+samplesFile = 'samples.py' 
 
 # file with list of samples
 plotFile = 'plot.py' 
