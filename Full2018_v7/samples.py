@@ -352,8 +352,9 @@ for _, sd in DataRun:
   for pd in DataSets:
     files = nanoGetSampleFiles(fakeDirectory, pd + '_' + sd)
     samples['Fake']['name'].extend(files)
-    samples['Fake']['weights'].extend([DataTrig[pd]] * len(files))
-
+    #samples['Fake']['weights'].extend([DataTrig[pd]] * len(files))
+    addSampleWeight(samples, 'Fake', pd + '_' + sd, DataTrig[pd])
+    
 ###########################################
 ################## DATA ###################
 ###########################################
