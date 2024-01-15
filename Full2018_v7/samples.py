@@ -1,4 +1,4 @@
-import os
+import os, glob
 import inspect
 from mkShapesRDF.lib.search_files import SearchFiles
 
@@ -368,6 +368,12 @@ samples['DATA'] = {
 
 for _, sd in DataRun:
   for pd in DataSets:
-    files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
-    samples['DATA']['name'].extend(files)
-    samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
+
+      tag = pd + '_' + sd
+      
+      files = nanoGetSampleFiles(dataDirectory, tag)
+      samples['DATA']['name'].extend(files)
+      addSampleWeight(samples, 'DATA', tag, DataTrig[pd])
+
+    
+    #samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
