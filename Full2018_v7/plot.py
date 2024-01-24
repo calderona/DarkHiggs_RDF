@@ -72,6 +72,15 @@ groupPlot['VgS']  = {
               }
 
 
+groupPlot['Higgs']  = {
+                  'nameHR' : 'Higgs',
+                  'isSignal' : 0,
+                  'color': 632, # kRed
+                  'samples'  : ['Higgs' ]
+              }
+
+
+
 '''
 mhs = ['160']
 mDM = ['100']
@@ -177,13 +186,6 @@ plot['WWewk']  = {
                   }
 
 
-plot['Zg']  = { 
-                  'color': 859,
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0
-                  }
-
 plot['Vg']  = {
                   'color': 859,
                   'isSignal' : 0,
@@ -193,7 +195,7 @@ plot['Vg']  = {
 
 
 plot['VgS']  = { 
-    'color'    : 859, # kAzure -1  
+    'color'    : 617, # kAzure -1  
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0

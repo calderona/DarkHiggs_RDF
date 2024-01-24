@@ -16,11 +16,12 @@ _tmp = [
 preselections = ' && '.join(_tmp)
 
 cuts['dhww2l2v_13TeV_sr'] = {
-    'expr': 'ptll>30 && mth > 50 && mll < 80 && drll < 2.5 && bVeto',
+    'expr': 'ptll>30 && mth > 50 && drll < 2.5',
     'categories' : {
-        '0j' : 'Alt(CleanJet_pt,0, 0.0)<30.0',
-        '1j' : 'Alt(CleanJet_pt,0, 0.0)>30.0 && Alt(CleanJet_pt,1, 0.0)<30.0',
-        '2j' : 'Sum(CleanJet_pt>30.0)==2',
+        '0j' : 'zeroJet',
+        '1bj' : 'bReq',
+        #'Alt(CleanJet_pt,0, 0.0)>30.0 && Alt(CleanJet_pt,1, 0.0)<30.0',
+        #'2j' : 'Sum(CleanJet_pt>30.0)==2',
     }
 }
 
